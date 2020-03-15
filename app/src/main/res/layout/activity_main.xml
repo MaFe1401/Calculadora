@@ -178,4 +178,27 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="29dp" />
+
+    <Button
+        android:id="@+id/UnidadBoton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="49dp"
+        android:text="Unidad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/unidText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="60dp"
+        android:background="#FDFCFC"
+        android:inputType="text"
+        android:text="Radianes"
+        android:textColor="#040404"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/UnidadBoton" />
 </android.support.constraint.ConstraintLayout>

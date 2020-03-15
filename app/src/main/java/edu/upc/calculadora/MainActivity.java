@@ -12,11 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-Button boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton0, botonmas, botonmenos, botonx, botondiv, botonigual, botonsin, botoncos, botontan, botonpunto,botonclear;
+Button boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton0, botonmas, botonmenos, botonx, botondiv, botonigual, botonsin, botoncos, botontan, botonpunto,botonclear, unidad;
 String signoOperacion=null;
 double operando1, operando2, resultado;
-int op2flag0=0, op1flag0=0, flagNuevaOperacion=0, flagsin=0, flagcos=0, flagtan=0;
-EditText pantalla, textonscreen;
+int op2flag0=0, op1flag0=0, flagNuevaOperacion=0, flagsin=0, flagcos=0, flagtan=0, flaggrados=0;
+EditText pantalla, textonscreen, textounit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,8 @@ EditText pantalla, textonscreen;
         botonpunto=(Button)findViewById(R.id.buttonPoint);
         botonclear=(Button)findViewById(R.id.buttonClear);
         pantalla=(EditText) findViewById(R.id.Pantalla);
-
+        unidad=(Button)findViewById(R.id.UnidadBoton);
+        textounit=(EditText) findViewById(R.id.unidText);
                 pantalla.addTextChangedListener(new TextWatcher() {
 
                     @Override
@@ -76,6 +77,20 @@ EditText pantalla, textonscreen;
 
                     @Override
                     public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                unidad.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (flaggrados==0) {
+                            flaggrados = 1;
+                            textounit.setText("Grados");
+                        }
+                        else {
+                            flaggrados=0;
+                            textounit.setText("Radianes");
+                        }
 
                     }
                 });
@@ -409,19 +424,40 @@ EditText pantalla, textonscreen;
                                 operando1=Double.parseDouble(textonscreen.getText().toString());
                                 if (flagsin==1)
                                 {
-                                    operando1=Math.sin(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando1=Math.cos(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando1=Math.tan(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
 
@@ -442,19 +478,40 @@ EditText pantalla, textonscreen;
                                 operando2=Double.parseDouble(textonscreen.getText().toString());//Se asigna lo que habia en pantalla antes de clicar "+" al operando2
                                 if (flagsin==1)
                                 {
-                                    operando2=Math.sin(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando2=Math.cos(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando2=Math.tan(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
                                 if (operando2==0)//Si habia un cero, el operando2 es 0 (ya no es null)
@@ -482,19 +539,40 @@ EditText pantalla, textonscreen;
                                 operando1=Double.parseDouble(textonscreen.getText().toString());
                                 if (flagsin==1)
                                 {
-                                    operando1=Math.sin(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando1=Math.cos(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando1=Math.tan(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
 
@@ -526,19 +604,40 @@ EditText pantalla, textonscreen;
                                 operando1=Double.parseDouble(textonscreen.getText().toString());
                                 if (flagsin==1)
                                 {
-                                    operando1=Math.sin(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando1=Math.cos(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando1=Math.tan(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
 
@@ -560,19 +659,40 @@ EditText pantalla, textonscreen;
                                 operando2=Double.parseDouble(textonscreen.getText().toString());//Se asigna lo que habia en pantalla antes de clicar "-" al operando2
                                 if (flagsin==1)
                                 {
-                                    operando2=Math.sin(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando2=Math.cos(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando2=Math.tan(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
                                 if (operando2==0)//Si habia un cero, el operando2 es 0 (ya no es null)
@@ -599,19 +719,40 @@ EditText pantalla, textonscreen;
                                 operando1=Double.parseDouble(textonscreen.getText().toString());
                                 if (flagsin==1)
                                 {
-                                    operando1=Math.sin(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando1=Math.cos(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando1=Math.tan(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
 
@@ -645,19 +786,40 @@ EditText pantalla, textonscreen;
                                 operando1=Double.parseDouble(textonscreen.getText().toString());
                                 if (flagsin==1)
                                 {
-                                    operando1=Math.sin(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando1=Math.cos(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando1=Math.tan(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
                             }
@@ -677,19 +839,40 @@ EditText pantalla, textonscreen;
                                 operando2=Double.parseDouble(textonscreen.getText().toString());//Se asigna lo que habia en pantalla antes de clicar "*" al operando2
                                 if (flagsin==1)
                                 {
-                                    operando2=Math.sin(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando2=Math.cos(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando2=Math.tan(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
                                 if (operando2==0)//Si habia un cero, el operando2 es 0 (ya no es null)
@@ -716,19 +899,40 @@ EditText pantalla, textonscreen;
                                 operando1=Double.parseDouble(textonscreen.getText().toString());
                                 if (flagsin==1)
                                 {
-                                    operando1=Math.sin(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando1=Math.cos(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando1=Math.tan(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
                             }
@@ -761,19 +965,40 @@ EditText pantalla, textonscreen;
                                 operando1=Double.parseDouble(textonscreen.getText().toString());
                                 if (flagsin==1)
                                 {
-                                    operando1=Math.sin(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando1=Math.cos(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando1=Math.tan(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
 
@@ -794,19 +1019,40 @@ EditText pantalla, textonscreen;
                                 operando2=Double.parseDouble(textonscreen.getText().toString());//Se asigna lo que habia en pantalla antes de clicar "/" al operando2
                                 if (flagsin==1)
                                 {
-                                    operando2=Math.sin(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando2=Math.cos(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando2=Math.tan(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando1;
+                                        operando2=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
                                 if (operando2==0)//Si habia un cero, el operando2 es 0 (ya no es null)
@@ -833,19 +1079,40 @@ EditText pantalla, textonscreen;
                                 operando1=Double.parseDouble(textonscreen.getText().toString());
                                 if (flagsin==1)
                                 {
-                                    operando1=Math.sin(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.sin(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.sin(operando1);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando1=Math.cos(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.cos(operando1);
+                                    }
+                                    else{
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.cos(operando1);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando1=Math.tan(operando1);
+                                    if(flaggrados==0)
+                                    {
+                                        operando1=Math.tan(operando1);
+                                    }
+                                    else {
+                                        operando1=(Math.PI/180)*operando1;
+                                        operando1=Math.tan(operando1);
+                                    }
                                     flagtan=0;
                                 }
 
@@ -866,6 +1133,9 @@ EditText pantalla, textonscreen;
                         operando1=0;
                         operando2=0;
                         op2flag0=0;
+                        flagsin=0;
+                        flagcos=0;
+                        flagtan=0;
                         pantalla.setText("");
                         signoOperacion=null;
                     }
@@ -875,21 +1145,45 @@ EditText pantalla, textonscreen;
                     public void onClick(View v) {//Al clicar el boton =
                         if (signoOperacion==null)
                         {
+                            textonscreen=(EditText) findViewById(R.id.Pantalla);
+                            operando1=Double.parseDouble(textonscreen.getText().toString());
                             if (flagsin==1)
                             {
-                                resultado=Math.sin(operando1);
+                                if (flaggrados==0)
+                                {
+                                    resultado=Math.sin(operando1);
+                                }
+                                else {
+                                    resultado=(Math.PI/180)*operando1;
+                                    resultado=Math.sin(resultado);
+                                }
                                 flagsin=0;
                                 pantalla.setText(String.valueOf(resultado));
                             }
                             if (flagcos==1)
                             {
-                                resultado=Math.cos(operando1);
+                                if (flaggrados==0)
+                                {
+                                    resultado=Math.cos(operando1);
+                                }
+                                else
+                                {
+                                    resultado=(Math.PI/180)*operando1;
+                                    resultado=Math.cos(resultado);
+                                }
                                 flagcos=0;
                                 pantalla.setText(String.valueOf(resultado));
                             }
                             if (flagtan==1)
                             {
-                                resultado=Math.tan(operando1);
+                                if(flaggrados==0)
+                                {
+                                    resultado=Math.tan(operando1);
+                                }
+                                else {
+                                    resultado=(Math.PI/180)*operando1;
+                                    resultado=Math.tan(resultado);
+                                }
                                 flagtan=0;
                                 pantalla.setText(String.valueOf(resultado));
                             }
@@ -902,19 +1196,40 @@ EditText pantalla, textonscreen;
                             {
                                 if (flagsin==1)
                                 {
-                                    operando2=Math.sin(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.sin(operando2);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando2;
+                                        operando2=Math.sin(operando2);
+                                    }
                                     flagsin=0;
                                 }
 
                                 if (flagcos==1)
                                 {
-                                    operando2=Math.cos(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.cos(operando2);
+                                    }
+                                    else{
+                                        operando2=(Math.PI/180)*operando2;
+                                        operando2=Math.cos(operando2);
+                                    }
                                     flagcos=0;
                                 }
 
                                 if (flagtan==1)
                                 {
-                                    operando2=Math.tan(operando2);
+                                    if(flaggrados==0)
+                                    {
+                                        operando2=Math.tan(operando2);
+                                    }
+                                    else {
+                                        operando2=(Math.PI/180)*operando2;
+                                        operando2=Math.tan(operando2);
+                                    }
                                     flagtan=0;
                                 }
 
